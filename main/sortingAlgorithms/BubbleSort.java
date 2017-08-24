@@ -1,8 +1,17 @@
-package sortingAlgorithms;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+*Algorithm complexity O(n^2)
+*input :
+*n 				no of elements
+* x x x x x x x ... x		n elements to be sorted	
+* for execution:
+* 1. go to any onlie ide like:
+*    -http://ide.geeksforgeeks.org/index.php
+* 2. paste the code into the editor
+* 3. set custom input as:
+*		 10
+*		 45 34 7 33 4 7 3 6 3 999
+*/
 public class BubbleSort {
 	public static void main(String args[]) {
         Scanner in=new Scanner(System.in);
@@ -19,7 +28,7 @@ public class BubbleSort {
         int flag;
         for(int i=0;i<a.length;i++){
             flag=0;
-            for(int j=i;j<a.length-1;j++){
+            for(int j=0;j<a.length-1-i;j++){
                 if(a[j+1]<a[j]){
                     a[j]=a[j]+a[j+1];
                     a[j+1]=a[j]-a[j+1];
@@ -27,7 +36,12 @@ public class BubbleSort {
                     flag=1;
                 }
             }
-            if(flag==0)                     //early exit
+		/*
+		*EARLY EXIT : if a pass over the array does not swap atleast one element than no furthe 
+		* 	      passes will change the state of array as the array is already sorted.	
+		*/
+		
+            if(flag==0)                     
             break;
         }
         return a;
