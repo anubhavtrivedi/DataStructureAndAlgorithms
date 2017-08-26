@@ -9,7 +9,7 @@ public class VebTree {
     public static void main(String args[]){
         root=new VebNode(16);
        
-       
+       //for testing
         insertVeb(4);
         insertVeb(12);
         insertVeb(13);
