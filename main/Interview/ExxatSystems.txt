@@ -1,0 +1,73 @@
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+public class ExxatSystems{
+
+//Find the no of times a digit comes in range n1 and n2
+
+     public static void main(String []args){
+        Scanner in= new Scanner(System.in);
+        int n1= in.nextInt();
+        int n2=in.nextInt();
+        int digit=in.nextInt();
+        
+        int ans=0;
+        //get all occurances from 0 to n2
+        ans+=digitOccuranceCountRange(n2,digit);
+        //subtract all the occuranced from 0 to n1
+        ans-=digitOccuranceCountRange(n1,digit);
+        if(String.valueOf(n1).contains(""+digit)){
+            //add no of digit in the n1
+            ans+=digitCount(n1,digit);
+        }
+        
+        System.out.println("Ans :"+ans);
+     }
+     
+     
+     public static int digitOccuranceCountRange(int n,int val){
+         int ans=0;
+         int div=10;
+         int digit;
+         while(n/div!=0){
+             ans+=((int)n/div)*(div/10);
+             
+             digit=((int)(n%div)*10/div);
+             if(digit>=val){
+                 ans+=div/10;
+             }
+             div*=10;
+         }
+         
+         //for the highest order digit of number n
+         digit=((int)(n%div)*10/div);
+             if(digit>=val){
+                 ans+=div/10;
+             }
+             
+         return ans;
+     }
+     
+     public static int digitCount(int n,int val){
+         int div=1;
+         int digit;
+         int ans=0;
+         while(n/div!=0){
+             digit=((int)n/div)%(div*10);
+             
+             if(digit==val)
+             ans++;
+             div*=10;
+         }
+         
+         return ans;
+     }
+}
+
+
+
+
+
+
+
